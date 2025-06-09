@@ -39,33 +39,38 @@
 | Fold 5 | 0.8000 | 1.0000 | 0.6154 | 0.7619 | 0.9551 |
 | **Mean ± Std** | **0.7840 ± 0.0196** | **0.9556 ± 0.0544** | **0.6154 ± 0.0000** | **0.7481 ± 0.0170** | **0.9538 ± 0.0143** |
 
-3.  Receiver Operating Characteristic (ROC) Curves Across 5 Folds with Mean AUC: 
-<img width="400" alt="image" src="https://github.com/user-attachments/assets/3ab9341c-7983-4a1c-a1bf-aafe155ed776" />
+- Model shows high precision but relatively low recall, suggesting it misses many actual “Mutant” cases (i.e., high false negatives). This may be due to the use of frozen encoder weights.
+- Accuracy remains consistent across folds, with stable performance on unseen data.
+- ROC AUC is consistently high (~0.95 ± 0.01), indicating strong ability to distinguish between WT and MUT.
+- Low standard deviations across metrics imply reliable generalization across all folds.
 
-- The closer the AUC is to 1.0, the better the model distinguishes WT from MUT. In our case, the mean AUC across folds was 0.95 ± 0.01, indicating consistently high discriminative performance across all validation splits.
+3. Plots:
+- Receiver Operating Characteristic (ROC) Curves Across 5 Folds with Mean AUC: 
 
-4. Training and Validation loss curves across all 5 folds during cross-validation:
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/3ab9341c-7983-4a1c-a1bf-aafe155ed776" /> 
+
+- Training and Validation loss curves across all 5 folds during cross-validation:
 
 <img width="400" alt="image" src="https://github.com/user-attachments/assets/ccc3fdf1-c338-42c4-9c1f-25e93d699eba" />
 
 
 <img width="400" alt="image" src="https://github.com/user-attachments/assets/ea0d653f-8514-4823-893a-f879377d67d9" />
 
-- The model does not appear to be overfitting, as:
-  - A low average standard deviation of training loss (~0.0082) and validation loss (~0.0186) across the 5 folds is low, indicating low variance and stable generalization across folds.
-  - Validation loss consistently remains below training loss, which may indicate good generalization.
-  - However, this pattern may arise due to the use of transfer learning with a frozen encoder, with the encoder’s weights frozen during training. Additionally, strong regularization techniques—such as dropout or data augmentation—are applied during training but not during validation. These factors can make the model’s performance appear worse on the training data than on the validation set, leading to higher training loss despite the model actually generalizing well.
+- The model does not appear to be overfitting:
+    - Validation loss is consistently below training loss, which may suggest good generalization.
+    -  This pattern may result from the use of transfer learning with frozen encoder weights, along with regularization techniques (such as dropout or data augmentation) applied during training but not during validation — leading to artificially higher training loss despite good generalization.
+
 
  
 **Note: During 5-fold cross-validation, Fold 3 stopped training at epoch 26 due to early stopping. All other folds continued training up to epoch 30. To ensure consistency in visualizing and averaging training and validation losses across folds, all loss curves were truncated at epoch 26 (the final epoch completed by every fold).**
 
-## Approach 2 : Train the entire network without freezing encoder weights [Hoping for better results here!!]
+## Approach 2 : Train the entire network without freezing encoder weights. Hoping for better results here!!
 
 
 ## To-Do List
 
 - [x] Finalise the Network for training my 3D medical dataset.
-- [x] Approach 1
+- [x] Approach 1 - recall low is a problem here.
 - [ ] Approach 2
 
 
