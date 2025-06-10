@@ -64,6 +64,13 @@
  
 **Note: During 5-fold cross-validation, Fold 3 stopped training at epoch 26 due to early stopping. All other folds continued training up to epoch 30. To ensure consistency in visualizing and averaging training and validation losses across folds, all loss curves were truncated at epoch 26 (the final epoch completed by every fold).**
 
+4. Grad-CAM : The representations visualised are from the pretrained encoder's last layer and this wasn't trained in approach1, so the results are going to be roughly informative. We'll compare these results with the approach 2's encoder.
+ <img width="400" alt="image" src="https://github.com/user-attachments/assets/9343e7b5-f955-4ab7-b90a-c184ceea59de" />
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/49ffbeef-86ec-47f7-a5b9-9d54df4cfdf2" />
+
+
+
+
 ## Approach 2 : Train the entire network without freezing encoder weights. Hoping for better results here!!
 
 
