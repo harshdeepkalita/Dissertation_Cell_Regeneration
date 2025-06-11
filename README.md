@@ -20,7 +20,6 @@
 - Implemented 5 Fold Cross Validation.
 - Ran the network for 30 epochs per fold.
 - Total training time : 23 hours, 10 minutes, and 25 seconds.
-- Encoder weights were frozen; only the output layer was trained.
 - Loss function : Binary Cross Entropy 
 
 1. K = 5 Fold Cross-Validation Summary (Training Phase): 
@@ -71,13 +70,57 @@
 
 
 
-## Approach 2 : Train the entire network without freezing encoder weights. Hoping for better results here!!
+## Approach 2 : Train the entire network without freezing encoder weights.
 
+- Implemented 5 Fold Cross Validation.
+- Ran the network for 30 epochs per fold.
+- Total training time : 23 hours, 10 minutes, and 25 seconds.
+- Loss function : Binary Cross Entropy 
+
+1. K = 5 Fold Cross-Validation Summary (Training Phase):
+<img width="484" alt="image" src="https://github.com/user-attachments/assets/23a87a5b-bb97-4e11-8c3c-96cefe786909" />
+
+   
+
+3. Evaluation Metrics on Unseen Validation Data from 5-Fold Cross-Validation:
+
+| Trained Model (Fold)   | Accuracy | Precision | Recall | F1 Score | ROC AUC |
+|--------|----------|-----------|--------|----------|---------|
+| Fold 1 | 1.0000   | 1.0000    | 1.0000 | 1.0000   | 1.0000  |
+| Fold 2 | 1.0000   | 1.0000    | 1.0000 | 1.0000   | 1.0000  |
+| Fold 3 | 1.0000   | 1.0000    | 1.0000 | 1.0000   | 1.0000  |
+| Fold 4 | 1.0000   | 1.0000    | 1.0000 | 1.0000   | 1.0000  |
+| Fold 5 | 1.0000   | 1.0000    | 1.0000 | 1.0000   | 1.0000  |
+| **Mean ± Std** | **1.0000 ± 0.0000** | **1.0000 ± 0.0000** | **1.0000 ± 0.0000** | **1.0000 ± 0.0000** | **1.0000 ± 0.0000** |
+
+- The model achieved perfect classification metrics across all folds, indicating highly consistent performance.
+- Recall has increased from 0.6154 to 1.000, no false negatives.
+- The zero standard deviation across folds shows the model is not only accurate but also consistent.
+
+  
+**Note: The results appeared too good to be true at first glance. To ensure reliability, I thoroughly checked for class imbalance and data leakage. Both checks confirmed no issues, validating the integrity of the evaluation pipeline:**
+
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/cc032b06-64ff-4ffe-aa3b-af7d1c857aae" />
+
+3. Plots:
+   
+- Receiver Operating Characteristic (ROC) Curves Across 5 Folds with Mean AUC:
+  
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/c45d2c7e-a724-4ed2-83f2-0deff284661f" />
+
+
+- Training and Validation loss curves across all 5 folds during cross-validation:
+
+<img width="991" alt="image" src="https://github.com/user-attachments/assets/e49ae759-2eab-4204-bf39-083159b29272" />
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/fda45d73-cb5c-420e-ac2c-57aafe8cc7fc" />
+
+The trends of the loss curves are similar to Approach 1, but both training and validation losses have reduced significantly, indicating improved generalization.
 
 ## To-Do List
 
 - [x] Finalise the Network for training my 3D medical dataset.
 - [x] Approach 1 - recall low is a problem here.
-- [ ] Approach 2
+- [x] Approach 2
+- [ ] Implement additional evaluation methods to validate results
 
 
