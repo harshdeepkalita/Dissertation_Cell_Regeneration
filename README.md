@@ -82,7 +82,7 @@
 
    
 
-3. Evaluation Metrics on Unseen Validation Data from 5-Fold Cross-Validation:
+2. Evaluation Metrics on Unseen Validation Data from 5-Fold Cross-Validation:
 
 | Trained Model (Fold)   | Accuracy | Precision | Recall | F1 Score | ROC AUC |
 |--------|----------|-----------|--------|----------|---------|
