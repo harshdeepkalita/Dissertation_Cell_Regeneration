@@ -118,3 +118,13 @@ The trends of the loss curves are similar to Approach 1, but both training and v
 - [ ] Implement additional evaluation methods to validate results
 
 
+
+
+
+<img src="https://github.com/user-attachments/assets/51352427-5fe7-4d8a-9d69-3aed1b4809f2" alt="Feature Space Animation with MUT/WT and Arrows" width="500">
+
+
+
+
+
+
